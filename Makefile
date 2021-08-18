@@ -7,6 +7,10 @@ bypass.o: bypass.c
 fix.o: fix.S
 	as -32 $< -o $@
 
-.PHONY: clean
+.PHONY: clean dist
 clean:
 	rm -f decode bypass.o fix.o
+
+dist:
+	tar zcvf decode.tar.gz Makefile fix.S bypass.c decode.o libcypher.so
+
